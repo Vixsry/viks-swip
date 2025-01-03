@@ -1,43 +1,43 @@
-# Viks-swip.js
+# Viks-swip
 
-A lightweight, modern JavaScript slider library that provides infinite sliding capabilities with smooth transitions and touch support. Viks-swip.js is designed to be simple to implement while offering powerful customization options.
+A lightweight, modern and feature-rich slider/carousel library with zero dependencies.
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Size](https://img.shields.io/badge/size-12.4kb-green.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Features
 
-Viks-swip.js comes with several powerful features built-in:
-
-- Infinite/continuous sliding without interruption
-- Touch and swipe support for mobile devices
-- Smooth transitions and animations
-- Responsive design support
-- Customizable navigation controls
-- Support for both image galleries and content slides
-- Thumbnail navigation system
-- Autoplay functionality with customizable delays
-- Easy integration with Bootstrap and other CSS frameworks
-- Built-in support for Font Awesome icons
+- 🚀 Lightweight and performant
+- 📱 Touch-enabled and responsive
+- 🎨 Modern and customizable design
+- ♾️ Infinite loop option
+- 🖱️ Mouse wheel support
+- ⌨️ Keyboard navigation
+- 🔄 Autoplay with pause on hover
+- 📱 Mobile-friendly with touch gestures
+- 🎯 Multiple slides per view
+- 🌗 Light and dark themes
+- ♿ Accessibility features
+- 🖼️ Lazy loading support
+- 🎭 CSS3 transitions and effects
 
 ## Installation
 
-### Using NPM
-
+### NPM
 ```bash
 npm install viks-swip
 ```
 
-### Direct Download
-
-Download the `viks-swip.js` and `viks-swip.css` files from this repository and include them in your project:
-
+### CDN
 ```html
-<link rel="stylesheet" href="path/to/viks-swip.css">
-<script src="path/to/viks-swip.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/viks-swip@1.0.0/dist/viks-swip.min.css">
+<script src="https://cdn.jsdelivr.net/npm/viks-swip@1.0.0/dist/viks-swip.min.js"></script>
 ```
 
 ## Basic Usage
 
 ### HTML Structure
-
 ```html
 <div class="viks-container">
     <div class="viks-wrapper">
@@ -45,170 +45,238 @@ Download the `viks-swip.js` and `viks-swip.css` files from this repository and i
         <div class="viks-slide">Slide 2</div>
         <div class="viks-slide">Slide 3</div>
     </div>
-    
-    <!-- Optional Navigation -->
-    <button class="viks-button-prev">Previous</button>
-    <button class="viks-button-next">Next</button>
-    
-    <!-- Optional Pagination -->
-    <div class="viks-pagination"></div>
 </div>
 ```
 
 ### JavaScript Initialization
-
 ```javascript
-const slider = new ViksSwip('.viks-container', {
-    slideClass: 'viks-s',
-    autoplay: true,
-    autoplayDelay: 3000,
-    slideDuration: 300
+const swiper = new ViksSwip('.viks-container', {
+    // options
 });
 ```
 
 ## Configuration Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| slideClass | string | 'viks-slide' | CSS class for slide elements |
-| slideActiveClass | string | 'viks-slide-active' | CSS class for active slide |
-| slideDuration | number | 300 | Transition duration in milliseconds |
-| autoplay | boolean | false | Enable/disable autoplay |
-| autoplayDelay | number | 3000 | Delay between slides in autoplay mode |
-| loop | boolean | true | Enable/disable infinite loop |
+```javascript
+const defaultOptions = {
+    slideClass: 'viks-slide',
+    slideActiveClass: 'viks-slide-active',
+    slideDuration: 300,
+    autoplay: false,
+    autoplayDelay: 3000,
+    loop: true,
+    pauseOnHover: true,
+    navigation: false,
+    pagination: false,
+    keyboard: true,
+    mousewheel: false,
+    grabCursor: true,
+    touchRatio: 1,
+    touchAngle: 45,
+    resistance: true,
+    resistanceRatio: 0.85,
+    speed: 300,
+    direction: 'horizontal',
+    slidesPerView: 1,
+    spaceBetween: 0,
+    centeredSlides: false,
+    initialSlide: 0,
+    lazyLoading: false
+};
+```
 
 ## API Methods
 
-### Navigation Methods
-
+### Navigation
 ```javascript
 // Go to next slide
-slider.next();
+swiper.slideNext();
 
 // Go to previous slide
-slider.prev();
+swiper.slidePrev();
 
 // Go to specific slide
-slider.goTo(index);
+swiper.slideTo(index);
+```
+
+### Control
+```javascript
+// Start autoplay
+swiper.startAutoplay();
 
 // Stop autoplay
-slider.stopAutoplay();
+swiper.stopAutoplay();
 
-// Start autoplay
-slider.startAutoplay();
+// Lock slider
+swiper.lock();
 
-// Destroy slider instance and clean up
-slider.destroy();
+// Unlock slider
+swiper.unlock();
+
+// Enable slider
+swiper.enable();
+
+// Disable slider
+swiper.disable();
 ```
 
-## Image Gallery Example
+### State and Information
+```javascript
+// Get current slide index
+swiper.getActiveIndex();
 
-Here's an example of how to create an image gallery with Viks-swip.js:
+// Get real index in loop mode
+swiper.getRealIndex();
 
-```html
-<div class="viks-container">
-    <div class="viks-wrapper">
-        <div class="viks-slide">
-            <img src="image1.jpg" alt="Image 1">
-        </div>
-        <div class="viks-slide">
-            <img src="image2.jpg" alt="Image 2">
-        </div>
-        <div class="viks-slide">
-            <img src="image3.jpg" alt="Image 3">
-        </div>
-    </div>
-    
-    <!-- Thumbnails -->
-    <div class="thumbnail-preview">
-        <img src="thumb1.jpg" class="thumbnail active">
-        <img src="thumb2.jpg" class="thumbnail">
-        <img src="thumb3.jpg" class="thumbnail">
-    </div>
-</div>
+// Check if it's the beginning
+swiper.isBeginning();
+
+// Check if it's the end
+swiper.isEnd();
+
+// Get progress
+swiper.getProgress();
 ```
 
-## Bootstrap Integration
+### Updates and Cleanup
+```javascript
+// Update slider dimensions
+swiper.update();
 
-Viks-swip.js works seamlessly with Bootstrap. Here's an example using Bootstrap cards:
+// Destroy instance and cleanup
+swiper.destroy();
+```
+
+## Events
+
+The library supports various callback events:
+
+```javascript
+const swiper = new ViksSwip('.viks-container', {
+    onInit: function(swiper) {
+        console.log('Slider initialized');
+    },
+    onSlideChange: function(swiper) {
+        console.log('Slide changed');
+    },
+    onTransitionStart: function(swiper) {
+        console.log('Transition started');
+    },
+    onTransitionEnd: function(swiper) {
+        console.log('Transition ended');
+    },
+    onTouchStart: function(swiper, event) {
+        console.log('Touch started');
+    },
+    onTouchMove: function(swiper, event) {
+        console.log('Touch moved');
+    },
+    onTouchEnd: function(swiper, event) {
+        console.log('Touch ended');
+    }
+});
+```
+
+## Responsive Breakpoints
+
+```javascript
+const swiper = new ViksSwip('.viks-container', {
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 10
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 20
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 30
+        }
+    }
+});
+```
+
+## Lazy Loading
+
+Enable lazy loading for images:
 
 ```html
 <div class="viks-slide">
-    <div class="card">
-        <img src="image.jpg" class="card-img-top">
-        <div class="card-body">
-            <h5 class="card-title">Slide Title</h5>
-            <p class="card-text">Slide content goes here.</p>
-        </div>
-    </div>
+    <img data-src="image.jpg" class="viks-lazy">
 </div>
 ```
 
-## Event Handling
-
-You can listen for various events:
-
 ```javascript
-// Navigation button events
-document.querySelector('.viks-button-next').addEventListener('click', () => {
-    slider.next();
-});
-
-// Thumbnail navigation
-document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-    thumb.addEventListener('click', () => {
-        slider.goTo(index + 1);
-    });
+const swiper = new ViksSwip('.viks-container', {
+    lazyLoading: true,
+    lazyLoadingClass: 'viks-lazy'
 });
 ```
 
-## Customizing Styles
+## CSS Customization
 
-The slider can be customized using CSS variables or by overriding the default classes. Here's an example of customizing the navigation buttons:
-
+### Basic Customization
 ```css
-.viks-button-next,
-.viks-button-prev {
-    background: rgba(255, 255, 255, 0.2);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+/* Change active slide color */
+.viks-slide-active {
+    background: #f0f0f0;
 }
 
-.viks-button-next:hover,
-.viks-button-prev:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-50%) scale(1.1);
+/* Customize navigation buttons */
+.viks-button-prev,
+.viks-button-next {
+    background: #333;
 }
+
+/* Customize pagination */
+.viks-bullet-active {
+    background: #007aff;
+}
+```
+
+### Dark Theme
+```html
+<div class="viks-container viks-dark">
+    <!-- slides -->
+</div>
 ```
 
 ## Browser Support
-
-Viks-swip.js supports all modern browsers including:
 
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
-- Opera (latest)
-- Mobile browsers (iOS Safari, Android Chrome)
+- IE 11 (basic support)
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-MIT License - feel free to use this in your projects!
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## Created By
+## Acknowledgments
 
-[Your Name/Organization]
+- Inspired by modern slider libraries
+- Uses CSS3 transforms for smooth animations
+- Built with performance and usability in mind
 
-## Version History
+## Support
 
-- 1.0.0: Initial release
-- 1.1.0: Added image gallery support
-- 1.2.0: Added thumbnail navigation
-- 1.3.0: Bootstrap integration improvements
+If you find any bugs or have feature requests, please create an issue in the GitHub repository.
 
+## Author
+
+Viks-swip is created and maintained by [Your Name].
+
+---
+
+Made with ❤️ for the open-source community.
