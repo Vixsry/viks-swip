@@ -1,8 +1,8 @@
 <div align="center">
   
-# 🌊 ViksSwip.js
+# 🌊 VIKS SWIP JS
 
-![ViksSwip Banner](https://via.placeholder.com/800x200/E0FFFF/00CED1?text=ViksSwip.js)
+![ViksSwip Banner](https://via.placeholder.com/800x200/E0FFFF/00CED1?text=VIKS SWIP JS)
 
 ### Modern Infinite Slider Library for Professional Web Applications
 
