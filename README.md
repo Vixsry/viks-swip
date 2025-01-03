@@ -324,13 +324,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Credits
 
-Created with ❤️ by [VIKRI AHPAD TANTOWI]
+Created with ❤️ by Vixsry
 
 ---
 
 <div align="center">
 
-Made with 🌊 by the Vixsry
+Made with 🌊 by the Viks Swip
 
 [Documentation](https://viksswip.dev) • [GitHub](https://github.com/username/viks-swip) • [npm](https://www.npmjs.com/package/viks-swip)
 
