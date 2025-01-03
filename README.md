@@ -82,6 +82,17 @@ pnpm add viks-swip
 </div>
 ```
 
+```html
+<!-- Default Aqua Theme -->
+<div class="viks-container">...</div>
+
+<!-- Material Design Theme -->
+<div class="viks-container viks-theme-material">...</div>
+
+<!-- iOS Theme -->
+<div class="viks-container viks-theme-ios">...</div>
+```
+
 ```javascript
 // Initialize with default options
 const slider = new ViksSwip('.viks-container');
