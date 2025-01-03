@@ -261,7 +261,7 @@ const swiper = new ViksSwip('.viks-container', {
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
@@ -275,7 +275,7 @@ If you find any bugs or have feature requests, please create an issue in the Git
 
 ## Author
 
-Viks-swip is created and maintained by [Your Name].
+VIKS SWIP is created and maintained by [VIKRI AHPAD TANTOWI].
 
 ---
 
