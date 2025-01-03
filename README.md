@@ -1,45 +1,41 @@
-# Viks-swip
+# ViksSwip
 
-A lightweight, modern and feature-rich slider/carousel library with zero dependencies.
-
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![Size](https://img.shields.io/badge/size-12.4kb-green.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+A lightweight, feature-rich JavaScript slider library with modern capabilities. ViksSwip provides smooth transitions, multiple effects, responsive design, and advanced features while maintaining high performance.
 
 ## Features
 
-- 🚀 Lightweight and performant
-- 📱 Touch-enabled and responsive
-- 🎨 Modern and customizable design
-- ♾️ Infinite loop option
-- 🖱️ Mouse wheel support
+- 🎯 Multiple transition effects (slide, fade, cube)
+- 📱 Touch and mouse swipe support
+- 🔄 Infinite loop
+- ⚡ High performance with requestAnimationFrame
+- 🖼️ Lazy loading images
+- 📐 Responsive breakpoints
 - ⌨️ Keyboard navigation
+- 🖱️ Mousewheel support
+- 🎨 Parallax effects
+- 🎮 Custom controls and indicators
 - 🔄 Autoplay with pause on hover
-- 📱 Mobile-friendly with touch gestures
-- 🎯 Multiple slides per view
-- 🌗 Light and dark themes
-- ♿ Accessibility features
-- 🖼️ Lazy loading support
-- 🎭 CSS3 transitions and effects
+- 📱 Mobile-friendly
+- 🎯 Event callbacks
+- ⚙️ Highly customizable
 
 ## Installation
 
-### NPM
 ```bash
-npm install viks-swip
+npm install viksswip
 ```
 
-### CDN
+Or include directly in your HTML:
+
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/viks-swip@1.0.0/dist/viks-swip.min.css">
-<script src="https://cdn.jsdelivr.net/npm/viks-swip@1.0.0/dist/viks-swip.min.js"></script>
+<script src="path/to/viks-swip.js"></script>
 ```
 
 ## Basic Usage
 
-### HTML Structure
+HTML Structure:
 ```html
-<div class="viks-container">
+<div class="slider-container">
     <div class="viks-wrapper">
         <div class="viks-slide">Slide 1</div>
         <div class="viks-slide">Slide 2</div>
@@ -48,9 +44,28 @@ npm install viks-swip
 </div>
 ```
 
-### JavaScript Initialization
+Basic CSS:
+```css
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.viks-wrapper {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.viks-slide {
+    flex-shrink: 0;
+    width: 100%;
+}
+```
+
+JavaScript Initialization:
 ```javascript
-const swiper = new ViksSwip('.viks-container', {
+const slider = new ViksSwip('.slider-container', {
     // options
 });
 ```
@@ -58,189 +73,165 @@ const swiper = new ViksSwip('.viks-container', {
 ## Configuration Options
 
 ```javascript
-const defaultOptions = {
-    slideClass: 'viks-slide',
-    slideActiveClass: 'viks-slide-active',
-    slideDuration: 300,
-    autoplay: false,
-    autoplayDelay: 3000,
-    loop: true,
-    pauseOnHover: true,
-    navigation: false,
-    pagination: false,
-    keyboard: true,
-    mousewheel: false,
-    grabCursor: true,
-    touchRatio: 1,
-    touchAngle: 45,
-    resistance: true,
-    resistanceRatio: 0.85,
-    speed: 300,
-    direction: 'horizontal',
-    slidesPerView: 1,
-    spaceBetween: 0,
-    centeredSlides: false,
-    initialSlide: 0,
-    lazyLoading: false
-};
+{
+    slideClass: 'viks-slide',         // Class for slides
+    slideActiveClass: 'viks-slide-active', // Class for active slide
+    slideDuration: 300,               // Transition duration in ms
+    autoplay: false,                  // Enable autoplay
+    autoplayDelay: 3000,             // Delay between transitions
+    loop: true,                       // Enable infinite loop
+    showIndicators: true,             // Show pagination indicators
+    showControls: true,               // Show navigation arrows
+    effect: 'slide',                  // 'slide', 'fade', 'cube'
+    direction: 'horizontal',          // 'horizontal', 'vertical'
+    touchThreshold: 0.2,              // Swipe threshold (0-1)
+    parallax: false,                  // Enable parallax effect
+    keyboard: true,                   // Enable keyboard navigation
+    mousewheel: false,                // Enable mousewheel navigation
+    preloadImages: true,              // Preload all images
+    lazy: false,                      // Enable lazy loading
+    breakpoints: {                    // Responsive breakpoints
+        768: {
+            slideDuration: 400,
+            // other options
+        }
+    },
+    onSlideChange: null,              // Slide change callback
+    onInit: null                      // Initialization callback
+}
 ```
 
-## API Methods
+## Advanced Features
 
-### Navigation
-```javascript
-// Go to next slide
-swiper.slideNext();
+### Lazy Loading
+Enable lazy loading for better performance:
 
-// Go to previous slide
-swiper.slidePrev();
-
-// Go to specific slide
-swiper.slideTo(index);
+```html
+<div class="viks-slide">
+    <img data-src="image.jpg" alt="Lazy loaded image">
+</div>
 ```
 
-### Control
 ```javascript
-// Start autoplay
-swiper.startAutoplay();
-
-// Stop autoplay
-swiper.stopAutoplay();
-
-// Lock slider
-swiper.lock();
-
-// Unlock slider
-swiper.unlock();
-
-// Enable slider
-swiper.enable();
-
-// Disable slider
-swiper.disable();
-```
-
-### State and Information
-```javascript
-// Get current slide index
-swiper.getActiveIndex();
-
-// Get real index in loop mode
-swiper.getRealIndex();
-
-// Check if it's the beginning
-swiper.isBeginning();
-
-// Check if it's the end
-swiper.isEnd();
-
-// Get progress
-swiper.getProgress();
-```
-
-### Updates and Cleanup
-```javascript
-// Update slider dimensions
-swiper.update();
-
-// Destroy instance and cleanup
-swiper.destroy();
-```
-
-## Events
-
-The library supports various callback events:
-
-```javascript
-const swiper = new ViksSwip('.viks-container', {
-    onInit: function(swiper) {
-        console.log('Slider initialized');
-    },
-    onSlideChange: function(swiper) {
-        console.log('Slide changed');
-    },
-    onTransitionStart: function(swiper) {
-        console.log('Transition started');
-    },
-    onTransitionEnd: function(swiper) {
-        console.log('Transition ended');
-    },
-    onTouchStart: function(swiper, event) {
-        console.log('Touch started');
-    },
-    onTouchMove: function(swiper, event) {
-        console.log('Touch moved');
-    },
-    onTouchEnd: function(swiper, event) {
-        console.log('Touch ended');
-    }
+const slider = new ViksSwip('.slider-container', {
+    lazy: true
 });
 ```
 
-## Responsive Breakpoints
+### Parallax Effect
+Add parallax effect to slide elements:
+
+```html
+<div class="viks-slide">
+    <div data-parallax="0.5">
+        This moves at half speed
+    </div>
+</div>
+```
 
 ```javascript
-const swiper = new ViksSwip('.viks-container', {
+const slider = new ViksSwip('.slider-container', {
+    parallax: true
+});
+```
+
+### Responsive Configuration
+Add breakpoint-specific options:
+
+```javascript
+const slider = new ViksSwip('.slider-container', {
+    slideDuration: 300,
     breakpoints: {
-        320: {
-            slidesPerView: 1,
-            spaceBetween: 10
-        },
         768: {
-            slidesPerView: 2,
-            spaceBetween: 20
+            slideDuration: 400,
+            effect: 'fade'
         },
         1024: {
-            slidesPerView: 3,
-            spaceBetween: 30
+            slideDuration: 500,
+            effect: 'cube'
         }
     }
 });
 ```
 
-## Lazy Loading
-
-Enable lazy loading for images:
-
-```html
-<div class="viks-slide">
-    <img data-src="image.jpg" class="viks-lazy">
-</div>
-```
+### Event Callbacks
+Use callbacks for custom behavior:
 
 ```javascript
-const swiper = new ViksSwip('.viks-container', {
-    lazyLoading: true,
-    lazyLoadingClass: 'viks-lazy'
+const slider = new ViksSwip('.slider-container', {
+    onInit: (swiper) => {
+        console.log('Slider initialized');
+    },
+    onSlideChange: (currentIndex, previousIndex) => {
+        console.log(`Slide changed from ${previousIndex} to ${currentIndex}`);
+    }
 });
 ```
 
-## CSS Customization
+## API Methods
 
-### Basic Customization
+```javascript
+// Navigate to next slide
+slider.next();
+
+// Navigate to previous slide
+slider.prev();
+
+// Go to specific slide
+slider.goTo(2);
+
+// Start autoplay
+slider.startAutoplay();
+
+// Stop autoplay
+slider.stopAutoplay();
+
+// Update configuration
+slider.updateConfig({
+    slideDuration: 500
+});
+
+// Refresh slider (e.g., after DOM changes)
+slider.refresh();
+
+// Destroy slider instance
+slider.destroy();
+```
+
+## Custom Styling
+
+### Navigation Arrows
 ```css
-/* Change active slide color */
-.viks-slide-active {
-    background: #f0f0f0;
-}
-
-/* Customize navigation buttons */
-.viks-button-prev,
-.viks-button-next {
-    background: #333;
-}
-
-/* Customize pagination */
-.viks-bullet-active {
-    background: #007aff;
+.viks-prev,
+.viks-next {
+    /* Your custom styles */
 }
 ```
 
-### Dark Theme
-```html
-<div class="viks-container viks-dark">
-    <!-- slides -->
-</div>
+### Pagination Indicators
+```css
+.viks-indicators {
+    /* Container styles */
+}
+
+.viks-indicator {
+    /* Individual indicator styles */
+}
+
+.viks-indicator.viks-active {
+    /* Active indicator styles */
+}
+```
+
+### Transition Effects
+```css
+.viks-wrapper[data-effect="fade"] {
+    /* Fade effect styles */
+}
+
+.viks-wrapper[data-effect="cube"] {
+    /* Cube effect styles */
+}
 ```
 
 ## Browser Support
@@ -249,34 +240,20 @@ const swiper = new ViksSwip('.viks-container', {
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
-- IE 11 (basic support)
+- IE 11 (basic features only)
+
+## License
+
+MIT License - feel free to use in commercial projects.
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Inspired by modern slider libraries
-- Uses CSS3 transforms for smooth animations
-- Built with performance and usability in mind
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
 
 ## Support
 
-If you find any bugs or have feature requests, please create an issue in the GitHub repository.
-
-## Author
-
-Viks-swip is created and maintained by [VIKRI AHPAD TANTOWI].
-
----
-
-Made with ❤️ VIKRI AHPAD TANTOWI for the open-source community.
+For issues and feature requests, please use the GitHub issues page.
