@@ -6,7 +6,7 @@
 
 ### Modern Infinite Slider Library for Professional Web Applications
 
-[![Version](https://img.shields.io/badge/version-1.0.0-7FFFD4?style=for-the-badge)](https://github.com/username/viks-swip)
+[![Version](https://img.shields.io/badge/version-1.0.0-7FFFD4?style=for-the-badge)](https://github.com/Vixsry/viks-swip)
 [![License](https://img.shields.io/badge/license-MIT-40E0D0?style=for-the-badge)](https://mit-license.org/)
 [![Size](https://img.shields.io/badge/size-12.5kb_minified-48D1CC?style=for-the-badge)](https://github.com/username/viks-swip)
 [![Downloads](https://img.shields.io/badge/downloads-1k/month-00CED1?style=for-the-badge)](https://github.com/username/viks-swip)
