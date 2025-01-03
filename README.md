@@ -1,215 +1,302 @@
 <div align="center">
   
-# 🌊 ViksSwip
+# 🌊 VIKSWIP 
+### Advanced Modern Slider Library
 
-[![MIT License](https://img.shields.io/badge/License-MIT-aqua.svg)](https://github.com/Vixsry/viks-animation/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.0-aqua.svg)](https://viksanimation.my.id/)
-[![Follow](https://img.shields.io/badge/Follow-@viksry12-aqua.svg)](https://www.instagram.com/viksry12)
+[![Version](https://img.shields.io/badge/version-1.0.0-00c8ff.svg?style=for-the-badge)](https://github.com/yourusername/vikswip)
+[![License](https://img.shields.io/badge/license-MIT-00c8ff.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Downloads](https://img.shields.io/badge/downloads-1k/month-00c8ff.svg?style=for-the-badge)](https://github.com/yourusername/vikswip)
 
-A lightweight, modern, and feature-rich JavaScript slider/carousel library with touch support.
+[🚀 Getting Started](#getting-started) •
+[🎨 Features](#features) •
+[📖 Documentation](#documentation) •
+[🔧 API](#api) •
+[🎯 Examples](#examples) •
+[📱 Mobile Support](#mobile-support)
 
 </div>
 
-## 🚀 Features
+---
 
-- 📱 Touch-enabled slider with smooth animations
-- 🔄 Infinite loop support
-- ⚡ Responsive and lightweight
-- 🎨 Customizable navigation and pagination
-- 🖼️ Lazy loading support
-- 📱 Mobile-friendly with touch gestures
+## 🌟 Overview
+
+VIKSWIP is a powerful, feature-rich slider/swiper library that goes beyond traditional carousel functionality. With advanced 3D effects, parallax support, virtual slides, and much more, VIKSWIP provides an unparalleled sliding experience for modern web applications.
+
+## 🚀 Getting Started
+
+### 📦 Installation
+
+```shell
+# Using npm
+npm install vikswip
+
+# Using yarn
+yarn add vikswip
+
+# Using pnpm
+pnpm add vikswip
+```
+
+### 💻 Basic Usage
+
+```html
+<!-- Include VIKSWIP CSS -->
+<link rel="stylesheet" href="vikswip.min.css">
+
+<!-- Create slider container -->
+<div class="vikswip">
+  <div class="vikswip-slide">Slide 1</div>
+  <div class="vikswip-slide">Slide 2</div>
+  <div class="vikswip-slide">Slide 3</div>
+</div>
+
+<!-- Include VIKSWIP JS -->
+<script src="vikswip.min.js"></script>
+
+<!-- Initialize VIKSWIP -->
+<script>
+const slider = new VIKSWIP('.vikswip', {
+  effect: 'slide',
+  autoplay: true
+});
+</script>
+```
+
+## 🎨 Features
+
+### 🎭 Core Features
+
+- 🔄 Multiple sliding effects
+- 📱 Touch-friendly
 - ⌨️ Keyboard navigation
-- 🖱️ Mousewheel support
-- 🎯 Centered slides option
-- 🔧 Highly configurable
+- 🖱️ Mouse wheel support
+- 🎯 Precise navigation
+- 🔁 Loop mode
+- ▶️ Autoplay with controls
 
-## 📦 Installation
+### 🎪 Advanced Effects
 
-### Using NPM
-```bash
-npm install viks-swip
-```
+- 🌟 3D Cube effect
+- 🎭 Coverflow
+- 💫 Flip transitions
+- 🌅 Ken Burns effect
+- 🎲 Card stack
+- 🌈 Glass morphism
+- 🖼️ Parallax backgrounds
 
-### Using CDN
+### 📊 Layout Options
+
+- 📏 Grid view
+- 🖼️ Multiple slides per view
+- 🎯 Centered slides
+- 📐 Dynamic slides
+- 🔳 Virtual slides
+- 👆 Free mode sliding
+
+### 🎯 Additional Features
+
+- 🖼️ Lazy loading
+- 📱 Responsive breakpoints
+- 🔍 Zoom functionality
+- 🎯 Thumbnail navigation
+- 📊 Progress bar
+- 🎨 Custom animations
+- ♿ Accessibility support
+
+## 📖 Documentation
+
+### 🎯 Installation Methods
+
+#### CDN
+
 ```html
-<script src="https://viksanimation.my.id/viks-swip.min.js"></script>
+<!-- VIKSWIP CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vikswip@1.0.0/dist/vikswip.min.css">
+
+<!-- VIKSWIP JS -->
+<script src="https://cdn.jsdelivr.net/npm/vikswip@1.0.0/dist/vikswip.min.js"></script>
 ```
 
-## 🎨 Basic Usage
-
-### HTML Structure
-```html
-<div class="viks-container">
-  <div class="viks-wrapper">
-    <div class="viks-slide">Slide 1</div>
-    <div class="viks-slide">Slide 2</div>
-    <div class="viks-slide">Slide 3</div>
-  </div>
-</div>
-```
-
-### JavaScript Initialization
-```javascript
-const slider = new ViksSwip('.viks-container', {
-  // options
-  slideClass: 'viks-slide',
-  slideDuration: 300,
-  autoplay: true,
-  loop: true
-});
-```
-
-## ⚙️ Configuration Options
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `slideClass` | string | 'viks-slide' | CSS class for slide elements |
-| `slideActiveClass` | string | 'viks-slide-active' | CSS class for active slide |
-| `slideDuration` | number | 300 | Transition duration in ms |
-| `autoplay` | boolean | false | Enable automatic sliding |
-| `autoplayDelay` | number | 3000 | Delay between transitions |
-| `loop` | boolean | true | Enable infinite loop |
-| `direction` | string | 'horizontal' | Slider direction ('horizontal'/'vertical') |
-| `slidesPerView` | number | 1 | Number of slides per view |
-| `spaceBetween` | number | 0 | Space between slides in pixels |
-| `centeredSlides` | boolean | false | Center active slide |
-| `grabCursor` | boolean | true | Show grab cursor |
-| `lazyLoading` | boolean | false | Enable lazy loading |
-
-## 🎮 API Methods
-
-### Basic Navigation
-```javascript
-// Go to next slide
-viksSlider.slideNext();
-
-// Go to previous slide
-viksSlider.slidePrev();
-
-// Go to specific slide
-viksSlider.slideTo(2);
-```
-
-### Control Methods
-```javascript
-// Start autoplay
-viksSlider.startAutoplay();
-
-// Stop autoplay
-viksSlider.stopAutoplay();
-
-// Lock slider
-viksSlider.lock();
-
-// Unlock slider
-viksSlider.unlock();
-
-// Update slider
-viksSlider.update();
-
-// Destroy slider
-viksSlider.destroy();
-```
-
-### State Methods
-```javascript
-// Get current slide index
-viksSlider.getActiveIndex();
-
-// Check if at beginning
-viksSlider.isBeginning();
-
-// Check if at end
-viksSlider.isEnd();
-
-// Get progress
-viksSlider.getProgress();
-```
-
-## 🎯 Events
+#### Module Import
 
 ```javascript
-const slider = new ViksSwip('.viks-container', {
-  onInit: (instance) => {
-    console.log('Slider initialized');
+// ES6 Modules
+import VIKSWIP from 'vikswip';
+import 'vikswip/dist/vikswip.min.css';
+
+// CommonJS
+const VIKSWIP = require('vikswip');
+require('vikswip/dist/vikswip.min.css');
+```
+
+## 🔧 API
+
+### 🎨 Configuration Options
+
+```javascript
+const slider = new VIKSWIP('.vikswip', {
+  // Core Options
+  direction: 'horizontal', // 'horizontal' | 'vertical'
+  loop: true,             // Enable continuous loop
+  speed: 300,             // Transition duration in ms
+  effect: 'slide',        // 'slide' | 'fade' | 'cube' | 'coverflow' | 'flip'
+  
+  // Slides Options
+  slidesPerView: 1,       // Number of slides per view
+  spacing: 20,            // Space between slides
+  centered: true,         // Center active slide
+  
+  // Navigation
+  navigation: {
+    enabled: true,
+    prevEl: '.vikswip-button-prev',
+    nextEl: '.vikswip-button-next'
   },
-  onSlideChange: (instance) => {
-    console.log('Slide changed');
+  
+  // Pagination
+  pagination: {
+    enabled: true,
+    type: 'bullets',      // 'bullets' | 'fraction' | 'progressbar'
+    clickable: true
   },
-  onTransitionStart: (instance) => {
-    console.log('Transition started');
+  
+  // Autoplay
+  autoplay: {
+    enabled: true,
+    delay: 3000,
+    pauseOnHover: true
   },
-  onTransitionEnd: (instance) => {
-    console.log('Transition ended');
-  }
-});
-```
-
-## 🎨 Styling
-
-### Basic CSS
-```css
-.viks-container {
-  width: 100%;
-  height: 300px;
-  position: relative;
-}
-
-.viks-slide {
-  background: aqua;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 24px;
-}
-
-.viks-slide-active {
-  opacity: 1;
-}
-```
-
-## 📱 Responsive Configuration
-
-```javascript
-const slider = new ViksSwip('.viks-container', {
+  
+  // Advanced Features
+  parallax: true,         // Enable parallax effect
+  zoom: true,             // Enable zoom feature
+  keyboard: true,         // Enable keyboard control
+  mousewheel: true,       // Enable mousewheel control
+  
+  // Responsive Breakpoints
   breakpoints: {
     320: {
-      slidesPerView: 1,
-      spaceBetween: 10
+      slidesPerView: 1
     },
     768: {
-      slidesPerView: 2,
-      spaceBetween: 20
+      slidesPerView: 2
     },
     1024: {
-      slidesPerView: 3,
-      spaceBetween: 30
+      slidesPerView: 3
     }
   }
 });
 ```
 
-## 📖 License
+### 🎯 Methods
 
-MIT © [VIKRI AHPAD TANTOWI](https://github.com/Vixsry/viks-animation/blob/main/LICENSE)
+```javascript
+// Navigation
+slider.slideTo(index);    // Go to specific slide
+slider.slideNext();       // Go to next slide
+slider.slidePrev();      // Go to previous slide
 
-## 👨‍💻 Author
+// Control
+slider.start();          // Start autoplay
+slider.stop();           // Stop autoplay
+slider.update();         // Update slider
+slider.destroy();        // Destroy slider instance
 
-**VIKRI AHPAD TANTOWI**
-- Website: [viksanimation.my.id](https://viksanimation.my.id/)
-- Github: [@Vixsry](https://github.com/Vixsry)
-- Instagram: [@viksry12](https://www.instagram.com/viksry12)
-- Facebook: [Share Profile](https://www.facebook.com/share/1E17jqYu34/)
+// State
+slider.isBeginning;      // Check if at beginning
+slider.isEnd;            // Check if at end
+slider.activeIndex;      // Get current slide index
+```
+
+### 🎭 Events
+
+```javascript
+slider.on('init', () => {
+  console.log('Slider initialized');
+});
+
+slider.on('slideChange', () => {
+  console.log('Slide changed');
+});
+
+slider.on('touchStart', () => {
+  console.log('Touch started');
+});
+
+slider.on('autoplayStart', () => {
+  console.log('Autoplay started');
+});
+```
+
+## 🎯 Examples
+
+### 🌟 Basic Slider
+
+```javascript
+const basicSlider = new VIKSWIP('.basic-slider', {
+  effect: 'slide',
+  autoplay: true,
+  loop: true
+});
+```
+
+### 🎭 3D Cube Effect
+
+```javascript
+const cubeSlider = new VIKSWIP('.cube-slider', {
+  effect: 'cube',
+  shadow: true,
+  pagination: true
+});
+```
+
+### 🌅 Parallax Gallery
+
+```javascript
+const parallaxSlider = new VIKSWIP('.parallax-slider', {
+  parallax: true,
+  speed: 1000,
+  mousewheel: true
+});
+```
+
+## 📱 Mobile Support
+
+VIKSWIP is fully responsive and touch-friendly, supporting:
+
+- 📱 Touch gestures
+- 🔄 Orientation changes
+- 🖼️ Responsive images
+- 🎯 Mobile-optimized controls
+- 📊 Adaptive performance
+
+## 🔧 Browser Support
+
+- 🌐 Chrome 60+
+- 🦊 Firefox 60+
+- 🧭 Safari 12+
+- 🌏 Edge 79+
+- 📱 iOS 12+
+- 🤖 Android 5+
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
-## 💫 Show your support
+## 📝 License
 
-Give a ⭐️ if this project helped you!
+VIKSWIP is [MIT licensed](LICENSE).
+
+## 🌟 Credits
+
+Created with 💙 by [Your Name]
+
+---
+
+<div align="center">
+  
+### 🌊 Made with VIKSWIP
+
+[![Stars](https://img.shields.io/github/stars/yourusername/vikswip?style=social)](https://github.com/yourusername/vikswip)
+
+</div>
