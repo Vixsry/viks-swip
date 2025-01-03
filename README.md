@@ -2,8 +2,6 @@
   
 # 🌊 VIKS SWIP JS
 
-![ViksSwip Banner](https://via.placeholder.com/800x200/E0FFFF/00CED1?text=VIKSSWIP.JS)
-
 ### Modern Infinite Slider Library for Professional Web Applications
 
 [![Version](https://img.shields.io/badge/version-1.0.0-7FFFD4?style=for-the-badge)](https://github.com/Vixsry/viks-swip)
